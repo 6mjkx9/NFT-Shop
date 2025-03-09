@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal NFT Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <button class="menu-btn" aria-label="Open menu">☰</button>
+            <div class="logo">Minimal NFT</div>
+            <div class="nav-buttons">
+                <button id="loginBtn" class="nav-btn" >Login</button>
+                <button id="logoutBtn" class="nav-btn" style="display: none;">Logout</button>
+                <button class="cart-btn" aria-label="View cart">🛒</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Discover Minimalist NFT Art</h1>
+                <p>Unique digital assets for the discerning collector.</p>
+            </div>
+        </section>
+        
+        <section id="nft-collection" class="container">
+            <div class="nft-grid">
+                <!-- Existing NFTs -->
+                <div class="nft-card">
+                    <img src="images/mb (2).jpg" alt="MoonBirds">
+                    <div class="nft-info">
+                        <h3>MoonBirds</h3>
+                        <p>By Team MoonBirds</p>
+                        <div class="chip-container">
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                        </div>
+                        <p class="nft-price">4.9 ETH</p>
+                        <button class="buy-btn" data-id="1" data-name="MoonBirds" data-price="4.9">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="images/az  (8).jpg" alt="Azyki">
+                    <div class="nft-info">
+                        <h3>Azyki</h3>
+                        <p>By Team Azyki</p>
+                        <div class="chip-container">
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                        </div>
+                        <p class="nft-price">7.3 ETH</p>
+                        <button class="buy-btn" data-id="2" data-name="Geometric Simplicity" data-price="7.3">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="images/D (1).jpg" alt="Doodles NFT">
+                    <div class="nft-info">
+                        <h3>Doodles</h3>
+                        <p>By Burnt Toast</p>
+                        <div class="chip-container">
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                        </div>
+                        <p class="nft-price">2.56 ETH</p>
+                        <button class="buy-btn" data-id="3" data-name="Doodles" data-price="2.56">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="images/6.jpg" alt="KaijuKing Composition NFT">
+                    <div class="nft-info">
+                        <h3>KaijuKingz Composition</h3>
+                        <p>By LinesMaster</p>
+                        <div class="chip-container">
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                        </div>
+                        <p class="nft-price">1.9 ETH</p>
+                        <button class="buy-btn" data-id="4" data-name="KaijuKing Composition" data-price="1.9">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="images/BAYC (2).jpg" alt="Bored Ape Yacht Club">
+                    <div class="nft-info">
+                        <h3>Bored Ape Yacht Club</h3>
+                        <p>By YugaLabs</p>
+                        <div class="chip-container">
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                        </div>
+                        <p class="nft-price">15 ETH</p>
+                        <button class="buy-btn" data-id="5" data-name="Bored Ape Yacht Club" data-price="15">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <img src="images/LP (2).jpg" alt="Lil Pudgy">
+                    <div class="nft-info">
+                        <h3>Lil Pudgy</h3>
+                        <p>By ThelglooConpany</p>
+                        <div class="chip-container">
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                            <span class="chip"></span>
+                        </div>
+                        <p class="nft-price">5.88 ETH</p>
+                        <button  class="buy-btn" data-id="6" data-name="Lil Pudgy" data-price="5.88">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="popup-menu">
+        <button class="close-menu" aria-label="Close menu">✕</button>
+        <nav class="menu-items">
+            <ul>
+                <li><a href="index.html">Logo</a></li>
+                <li><a href="#nft-collection">Explore NFTs</a></li>
+                <li><a href="create.html">Create NFT</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+             </ul>
+        </nav> 
+
+    </div>
+    <div class="cart">
+        <button class="close-cart" aria-label="Close cart">✕</button>
+        <h2>Your Cart</h2>
+        <div class="cart-items"></div>
+        <div class="cart-total">Total: 0 ETH</div>
+        <button class="checkout-btn">Checkout</button>
+    </div>
+    <script src="script.js"></script>
+    <script src="skript/home.js"></script>
+    <script>
+        function createNFTCard(nft) {
+            const card = document.createElement('div');
+            card.classList.add('nft-card');
+            card.innerHTML = `
+                <img src="${nft.image}" alt="${nft.name} NFT">
+                <div class="nft-info">
+                    <h3>${nft.name}</h3>
+                    <p>By ${nft.artist}</p>
+                    <div class="chip-container">
+                        ${nft.chips.map(chip => `<span class="chip">${chip}</span>`).join('')}
+                    </div>
+                    <p class="nft-price">${nft.price} ETH</p>
+                    <button class="buy-btn" data-id="${nft.id}" data-name="${nft.name}" data-price="${nft.price}">Add to Cart</button>
+                </div>
+            `;
+            return card;
+        }
+    
+        function displayNFTs() {
+            const nftGrid = document.querySelector('.nft-grid');
+            const existingNFTs = nftGrid.innerHTML; // Save existing NFTs
+            nftGrid.innerHTML = ''; // Clear existing NFTs
+            const nfts = JSON.parse(localStorage.getItem('nfts')) || [];
+            nfts.forEach(nft => {
+                const card = createNFTCard(nft);
+                nftGrid.appendChild(card);
+            });
+            nftGrid.innerHTML += existingNFTs; // Append existing NFTs
+    
+            // Add event listeners to buy buttons
+            document.querySelectorAll('.buy-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    const name = button.getAttribute('data-name');
+                    const price = parseFloat(button.getAttribute('data-price'));
+    
+                    addToCart(id, name, price);
+                    updateCartDisplay();
+                });
+            });
+        }
+    
+        // Call displayNFTs when the page loads
+        window.addEventListener('load', displayNFTs);
+    </script>
+</body>
+</html>

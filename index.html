@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Shop</title>
+    <link rel="stylesheet" href="index.html">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body, html {
+margin: 0;
+padding: 0;
+overflow-x: hidden;
+}
+.page {
+position: absolute;
+width: 100vw;
+height: 100vh;
+transition: transform 0.5s ease;
+}
+.page.page-1 {
+background-color: #D2D2D2;
+left: 0;
+}
+.page.page-2 {
+background-color: #D2D2D2;
+left: 100vw;
+}
+.page.page-1::before {
+position: absolute;
+width: min(1400px, 90vw);
+top: 10%;
+left: 50%;
+height: 90%;
+transform: translateX(-50%);
+content: '';
+background-image: url(images/bg.png);
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: top center;
+pointer-events: none;
+}
+
+.cta-btn {
+position: absolute;
+right: 10px; 
+bottom: 400px; 
+background: none;
+border: none;
+cursor: pointer;
+padding: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+transition: background-color 0.3s ease;
+}
+
+
+</style>
+<body>
+    <div class="page page-1">
+        <div class="banner">
+            <div class="slider" style="--quantity: 10">
+                <div class="item" style="--position: 1"><img src="images/pot1.jpg" alt="NFT 1"></div>
+                <div class="item" style="--position: 2"><img src="images/pot2.jpg" alt="NFT 2"></div>
+                <div class="item" style="--position: 3"><img src="images/pot3.jpg" alt="NFT 3"></div>
+                <div class="item" style="--position: 4"><img src="images/pot4.jpg" alt="NFT 4"></div>
+                <div class="item" style="--position: 5"><img src="images/pot5.jpg" alt="NFT 5"></div>
+                <div class="item" style="--position: 6"><img src="images/pot6.jpg" alt="NFT 6"></div>
+                <div class="item" style="--position: 7"><img src="images/pot7.jpg" alt="NFT 7"></div>
+                <div class="item" style="--position: 8"><img src="images/pot8.jpg" alt="NFT 8"></div>
+                <div class="item" style="--position: 9"><img src="images/pot9.jpg" alt="NFT 9"></div>
+                <div class="item" style="--position: 10"><img src="images/az  (10).jpg" alt="NFT 10"></div>
+            </div>
+            <div class="content">
+                <h1 data-content="NFT SHOP">NFT SHOP</h1>
+                <div class="model"></div>
+            </div>
+        </div>
+        <button id="loadPage2Btn" class="cta-btn">
+            ⟩
+            </svg>
+        </button>
+
+    </div>
+    
+    <div class="page page-2"></div>
+
+    <script src = "skript/index.js"></script>
+</body>
+</html>

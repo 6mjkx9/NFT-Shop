@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create NFT - Minimal NFT Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <button class="menu-btn" aria-label="Open menu">☰</button>
+            <div class="logo">Minimal NFT</div>
+            <button class="cart-btn" aria-label="View cart"></button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Create Your NFT</h1>
+                <p>Bring your digital art to life as an NFT.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="create-nft-container">
+                <form class="create-nft-form" id="createNFTForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nftName">NFT Name</label>
+                        <input type="text" id="nftName" name="nftName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="artistName">Artist Name</label>
+                        <input type="text" id="artistName" name="artistName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nftDescription">Description</label>
+                        <textarea id="nftDescription" name="nftDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="nftPrice">Price (ETH)</label>
+                        <input type="number" id="nftPrice" name="nftPrice" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nftImage">Upload Image</label>
+                        <input type="file" id="nftImage" name="nftImage" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nftChips">Tags (comma-separated)</label>
+                        <input type="text" id="nftChips" name="nftChips" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Create NFT</button>
+                    </div>
+                </form>
+                <div class="image-preview">
+                    <img id="imagePreview" src="/placeholder.svg?height=400&width=300" alt="NFT Preview">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="popup-menu">
+        <button class="close-menu" aria-label="Close menu">✕</button>
+        <nav class="menu-items">
+            <ul>
+                <li><a href="index.html">Logo</a></li>
+                <li><a href="home.html">Explore NFTs</a></li>
+                <li><a href="create.html">Create NFT</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('createNFTForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const nft = {
+                id: Date.now(),
+                name: formData.get('nftName'),
+                artist: formData.get('artistName'),
+                description: formData.get('nftDescription'),
+                price: parseFloat(formData.get('nftPrice')),
+                image: '',
+                chips: formData.get('nftChips').split(',').map(chip => chip.trim())
+            };
+    
+            const file = formData.get('nftImage');
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    nft.image = e.target.result;
+                    saveNFT(nft);
+                }
+                reader.readAsDataURL(file);
+            } else {
+                saveNFT(nft);
+            }
+    
+            function saveNFT(nft) {
+                let nfts = JSON.parse(localStorage.getItem('nfts')) || [];
+                nfts.push(nft);
+                localStorage.setItem('nfts', JSON.stringify(nfts));
+                alert('NFT created successfully! (This is a demo, no actual NFT was minted)');
+                this.reset();
+                document.getElementById('imagePreview').src = '/placeholder.svg?height=400&width=300';
+            }
+        });
+    
+        document.getElementById('nftImage').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
